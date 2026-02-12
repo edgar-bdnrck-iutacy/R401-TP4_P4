@@ -42,6 +42,8 @@ public partial class App : Application
 
     public static UIElement? AppTitlebar { get; set; }
 
+    public static FrameworkElement? MainRoot => MainWindow.Content as FrameworkElement;
+
     public App()
     {
         InitializeComponent();
@@ -60,6 +62,7 @@ public partial class App : Application
             services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
             services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
             services.AddTransient<INavigationViewService, NavigationViewService>();
+            services.AddSingleton<IService, WSService>();
 
             services.AddSingleton<IActivationService, ActivationService>();
             services.AddSingleton<IPageService, PageService>();

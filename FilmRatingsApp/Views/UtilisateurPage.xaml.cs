@@ -16,4 +16,13 @@ public sealed partial class UtilisateurPage : Page
         ViewModel = App.GetService<UtilisateurViewModel>();
         InitializeComponent();
     }
+
+    private void PwdBox_PasswordChanged(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        if (ViewModel?.UtilisateurSearch != null)
+        {
+            ViewModel.UtilisateurSearch.Pwd = PwdBox.Password;
+        }
+    }
+
 }

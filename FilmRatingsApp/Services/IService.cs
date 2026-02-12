@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FilmRatingsApp.Models;
 
 namespace FilmRatingsApp.Services;
-internal interface IService
+
+public interface IService
 {
+    Task<Utilisateur?> GetUtilisateurByEmailAsync(string email);
+    Task<bool> UpdateUtilisateurAsync(Utilisateur utilisateur);
+    Task<bool> AddUtilisateurAsync(Utilisateur utilisateur);
 }

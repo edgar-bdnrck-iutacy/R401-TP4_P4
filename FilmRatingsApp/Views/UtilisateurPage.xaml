@@ -4,9 +4,113 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    DataContext="{x:Bind ViewModel, Mode=OneWay}">
 
-    <Grid x:Name="ContentArea">
-        
-    </Grid>
+    <RelativePanel Margin="16">
+
+        <!-- Search -->
+        <StackPanel x:Name="panelSearch"
+                    Orientation="Horizontal"
+                    Margin="0,10,0,10"
+                    RelativePanel.AlignHorizontalCenterWithPanel="True">
+            <TextBlock Margin="0,4,8,0" Text="Mail"/>
+            <TextBox Width="300"
+                     Text="{Binding SearchMail, Mode=TwoWay}"
+                     Margin="0,0,8,0" />
+            <Button Content="Rechercher"
+                    Command="{Binding BtnSearchUtilisateurCommand}" />
+        </StackPanel>
+
+        <TextBlock x:Name="lblNom"
+                   Text="Nom"
+                   Margin="0,20,0,0"
+                   RelativePanel.Below="panelSearch"
+                   RelativePanel.AlignHorizontalCenterWithPanel="True" />
+        <TextBox Width="200"
+                 Text="{Binding UtilisateurSearch.Nom, Mode=TwoWay}"
+                 RelativePanel.Below="lblNom"
+                 RelativePanel.AlignHorizontalCenterWithPanel="True" />
+
+        <TextBlock x:Name="lblPrenom"
+                   Text="Prénom"
+                   RelativePanel.Below="lblNom"
+                   Margin="0,60,0,0"
+                   RelativePanel.AlignHorizontalCenterWithPanel="True" />
+        <TextBox Width="200"
+                 Text="{Binding UtilisateurSearch.Prenom, Mode=TwoWay}"
+                 RelativePanel.Below="lblPrenom"
+                 RelativePanel.AlignHorizontalCenterWithPanel="True" />
+
+        <TextBlock x:Name="lblMobile"
+                   Text="Mobile"
+                   RelativePanel.Below="lblPrenom"
+                   Margin="0,60,0,0"
+                   RelativePanel.AlignHorizontalCenterWithPanel="True" />
+        <TextBox Width="200"
+                 Text="{Binding UtilisateurSearch.Mobile, Mode=TwoWay}"
+                 RelativePanel.Below="lblMobile"
+                 RelativePanel.AlignHorizontalCenterWithPanel="True" />
+
+        <TextBlock x:Name="lblMail"
+                   Text="Mail"
+                   RelativePanel.Below="lblMobile"
+                   Margin="0,60,0,0"
+                   RelativePanel.AlignHorizontalCenterWithPanel="True" />
+        <TextBox Width="400"
+                 Text="{Binding UtilisateurSearch.Mail, Mode=TwoWay}"
+                 RelativePanel.Below="lblMail"
+                 RelativePanel.AlignHorizontalCenterWithPanel="True" />
+
+        <TextBlock x:Name="lblPassword"
+                   Text="Password"
+                   RelativePanel.Below="lblMail"
+                   Margin="0,60,0,0"
+                   RelativePanel.AlignHorizontalCenterWithPanel="True" />
+
+        <!-- PasswordBox: binding direct pas fiable => on gère via event dans code-behind -->
+        <PasswordBox x:Name="PwdBox"
+                     Width="200"
+                     PasswordChanged="PwdBox_PasswordChanged"
+                     RelativePanel.Below="lblPassword"
+                     RelativePanel.AlignHorizontalCenterWithPanel="True" />
+
+        <TextBlock x:Name="lblAdresse"
+                   Text="Adresse (Rue, CP, Ville, Pays)"
+                   RelativePanel.Below="PwdBox"
+                   Margin="0,60,0,0"
+                   RelativePanel.AlignHorizontalCenterWithPanel="True" />
+        <TextBox Width="400"
+                 Text="{Binding UtilisateurSearch.Rue, Mode=TwoWay}"
+                 RelativePanel.Below="lblAdresse"
+                 RelativePanel.AlignHorizontalCenterWithPanel="True" />
+
+        <TextBox Width="100"
+                 Text="{Binding UtilisateurSearch.CodePostal, Mode=TwoWay}"
+                 RelativePanel.Below="lblAdresse"
+                 Margin="0,40,0,0"
+                 RelativePanel.AlignHorizontalCenterWithPanel="True" />
+
+        <TextBox Width="200"
+                 Text="{Binding UtilisateurSearch.Ville, Mode=TwoWay}"
+                 RelativePanel.Below="lblAdresse"
+                 Margin="0,80,0,0"
+                 RelativePanel.AlignHorizontalCenterWithPanel="True" />
+
+        <TextBox Width="200"
+                 Text="{Binding UtilisateurSearch.Pays, Mode=TwoWay}"
+                 RelativePanel.Below="lblAdresse"
+                 Margin="0,120,0,0"
+                 RelativePanel.AlignHorizontalCenterWithPanel="True" />
+
+        <CommandBar RelativePanel.AlignBottomWithPanel="True"
+                    RelativePanel.AlignHorizontalCenterWithPanel="True">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="Save" Label="Save Change" Command="{Binding BtnModifyUtilisateurCommand}" />
+                <AppBarButton Icon="ClearSelection" Label="Clear" Command="{Binding BtnClearUtilisateurCommand}" />
+                <AppBarButton Icon="Add" Label="Add" Command="{Binding BtnAddUtilisateurCommand}" />
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+
+    </RelativePanel>
 </Page>
