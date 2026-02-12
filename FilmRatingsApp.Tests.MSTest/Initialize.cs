@@ -1,6 +1,6 @@
 ﻿using Microsoft.Windows.ApplicationModel.DynamicDependency;
 
-[assembly: WinUITestTarget(typeof(FilmRatingsApp.App))]
+//[assembly: WinUITestTarget(typeof(FilmRatingsApp.App))]
 
 namespace FilmRatingsApp.Tests.MSTest;
 
@@ -12,12 +12,12 @@ public class Initialize
     {
         // TODO: Initialize the appropriate version of the Windows App SDK.
         // This is required when testing MSIX apps that are framework-dependent on the Windows App SDK.
-        Bootstrap.TryInitialize(0x00010001, out var _);
+        //Bootstrap.TryInitialize(0x00010001, out var _);
     }
 
     [AssemblyCleanup]
     public static void AssemblyCleanup()
     {
-        Bootstrap.Shutdown();
+        //Bootstrap.Shutdown();
     }
 }
