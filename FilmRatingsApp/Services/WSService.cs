@@ -11,7 +11,7 @@ public class WSService : IService
     public WSService()
     {
         var loader = new ResourceLoader();
-        var baseUri = loader.GetString("MonURI");
+        var baseUri = loader.GetString("MonURI"); // MonURI = http://localhost:5047/
 
         _http = new HttpClient
         {
